@@ -9,11 +9,11 @@ public class MyRigidBody : MonoBehaviour
     [SerializeField] private Vector3 angularAcceleration = Vector3.zero; // Accélération angulaire de l'objet
     [SerializeField] private Vector3 impulse = Vector3.zero; // Impulsion appliquée à l'objet
     [SerializeField] private Vector3 gravityForce = Vector3.zero; // Force de gravité appliquée à l'objet
+    [SerializeField] private bool isKinematic = false; // Est-ce que l'objet est kinématique ?
     public float Mass = 1; // Masse de l'objet
     public float Inertia = 1; // Inertie de l'objet
 
     // [SerializeField] private float drag; // Coefficient de trainée
-    [SerializeField] private float gravity = 9.81f; // Gravité terrestre
     [SerializeField] private float friction = 0.1f; // Coefficient de frottement
 
 
@@ -27,6 +27,21 @@ public class MyRigidBody : MonoBehaviour
         Debug.Log("AddForce : " + gravityForce);
     }
 
+    public float getKineticEnergy()
+    {
+        return 0.5f * Mass * velocity.sqrMagnitude;
+    }
+
+    public float getPotentialEnergy()
+    {
+        return - (Mass * gravityForce * transform.position.y);
+    }
+
+    public float getMechanicalEnergy()
+    {
+        return getKineticEnergy() + getPotentialEnergy();
+    }
+
     private void FixedUpdate()
     {
         transform.position += velocity * Time.fixedDeltaTime + 1/2 * acceleration * (Time.fixedDeltaTime * Time.fixedDeltaTime);
@@ -34,6 +49,10 @@ public class MyRigidBody : MonoBehaviour
 
         velocity += acceleration * Time.fixedDeltaTime;
         angularVelocity += angularAcceleration * Time.fixedDeltaTime;
+
+        Debug.Log("Energie cinétique: " + GetKineticEnergy());
+        Debug.Log("Energie potentielle: " + GetPotentialEnergy());
+        Debug.Log("Energie totale: " + GetTotalEnergy());
 
         // // Apply force
         // Debug.Log("ApplyForce : " + force);
