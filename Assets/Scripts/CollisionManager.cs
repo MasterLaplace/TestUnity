@@ -24,22 +24,7 @@ public class CollisionManager : MonoBehaviour
                 continue;
 
             if (collider.IsColliding(other))
-            {
-                Debug.Log("Collision detected");
                 collider.ResolveCollision(other);
-                other.ResolveCollision(collider);
-            }
-
-        // for (int i = 0; i < colliders.Count; i++)
-        // {
-        //     for (int j = i + 1; j < colliders.Count; j++)
-        //     {
-        //         if (colliders[i].IsColliding(colliders[j]))
-        //         {
-        //             colliders[i].ResolveCollision(colliders[j]);
-        //             colliders[j].ResolveCollision(colliders[i]);
-        //         }
-        //     }
         }
     }
 

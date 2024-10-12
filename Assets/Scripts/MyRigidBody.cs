@@ -8,7 +8,6 @@ public class MyRigidBody : MonoBehaviour
     [SerializeField] private Vector3 acceleration = Vector3.zero; // Accélération de l'objet
     [SerializeField] private Vector3 angularAcceleration = Vector3.zero; // Accélération angulaire de l'objet
     public float Mass = 1; // Masse de l'objet
-    // [SerializeField] private float gravity = 9.81f; // Gravité terrestre
     [SerializeField] private float friction = 0.1f; // Coefficient de frottement
 
 
@@ -50,9 +49,9 @@ public class MyRigidBody : MonoBehaviour
         velocity += acceleration * Time.fixedDeltaTime;
         angularVelocity += angularAcceleration * Time.fixedDeltaTime;
 
-        // Debug.Log("Energie cinétique: " + GetKineticEnergy());
-        // Debug.Log("Energie potentielle: " + GetPotentialEnergy());
-        // Debug.Log("Energie totale: " + GetMechanicalEnergy());
+        Debug.Log("Energie cinétique: " + GetKineticEnergy());
+        Debug.Log("Energie potentielle: " + GetPotentialEnergy());
+        Debug.Log("Energie totale: " + GetMechanicalEnergy());
 
         acceleration = (force / Mass) - (friction * velocity);
         angularAcceleration = (force / Mass) - (friction * angularVelocity);

@@ -11,7 +11,7 @@ public class MySphereCollider : MyCollider
 
     void Start()
     {
-        center = new Vector3(transform.position.x, transform.position.y);
+        center = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         CollisionManager.Instance.AddCollider(this);
     }
 
@@ -28,7 +28,7 @@ public class MySphereCollider : MyCollider
 
     void Update()
     {
-        this.center = new Vector3(transform.position.x, transform.position.y);
+        this.center = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         CollisionManager.Instance.CheckCollisions(this);
     }
 

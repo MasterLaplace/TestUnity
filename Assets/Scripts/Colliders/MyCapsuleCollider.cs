@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class MyCapsuleCollider : MyCollider
 {
-    public Vector3 center;
+    public Vector3 pointA;
+    public Vector3 pointB;
+    [SerializeField] private float length;
+
     public float radius;
     public float elasticity = 1.0f;
 
     void Start()
     {
-        center = new Vector3(transform.position.x, transform.position.y);
+        pointA = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        pointB = new Vector3(transform.position.x, transform.position.y + length, transform.position.z);
+
         CollisionManager.Instance.AddCollider(this);
     }
 
@@ -22,7 +27,8 @@ public class MyCapsuleCollider : MyCollider
 
     void Update()
     {
-        this.center = new Vector3(transform.position.x, transform.position.y);
+        this.pointA = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        this.pointB = new Vector3(transform.position.x, transform.position.y + length, transform.position.z);
         CollisionManager.Instance.CheckCollisions(this);
     }
 
@@ -37,7 +43,7 @@ public class MyCapsuleCollider : MyCollider
 
     private bool IsCollidingWithCapsule(MyCapsuleCollider otherCapsule)
     {
-        return Vector2.Distance(this.center, otherCapsule.center) <= (this.radius + otherCapsule.radius);
+        return 0 <= 0;
     }
 
     public override void ResolveCollision(MyCollider other)
@@ -53,18 +59,9 @@ public class MyCapsuleCollider : MyCollider
 
     private void ResolveCollisionWithCapsuleImobilize(MyCapsuleCollider otherCapsule)
     {
-        Vector3 direction = (this.center - otherCapsule.center).normalized;
-        this.transform.position += direction * (this.radius + otherCapsule.radius - Vector2.Distance(this.center, otherCapsule.center));
     }
 
     private void ResolveCollisionWithCapsuleBounce(MyCapsuleCollider otherCapsule)
     {
-        Vector3 direction = (this.center - otherCapsule.center).normalized;
-        this.transform.position += direction * (this.radius + otherCapsule.radius - Vector2.Distance(this.center, otherCapsule.center));
-
-        Vector3 relativeVelocity = otherCapsule.rigidBody.velocity - this.rigidBody.velocity;
-        Vector3 bounceVelocity = relativeVelocity.magnitude * this.elasticity * direction;
-
-        this.rigidBody.velocity += bounceVelocity;
     }
 }
