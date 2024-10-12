@@ -24,10 +24,7 @@ public class CollisionManager : MonoBehaviour
                 continue;
 
             if (collider.IsColliding(other))
-            {
                 collider.ResolveCollision(other);
-                other.ResolveCollision(collider);
-            }
         }
     }
 
