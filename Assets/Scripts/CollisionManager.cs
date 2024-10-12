@@ -38,10 +38,7 @@ public class CollisionManager : MonoBehaviour
             for (int j = i + 1; j < colliders.Count; j++)
             {
                 if (colliders[i].IsColliding(colliders[j]))
-                {
                     colliders[i].ResolveCollision(colliders[j]);
-                    colliders[j].ResolveCollision(colliders[i]);
-                }
             }
         }
     }

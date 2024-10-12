@@ -118,7 +118,7 @@ MonoBehaviour:
   Mass: 5
   friction: 0.1
   force: {x: 0, y: 0, z: 0}
-  isKinematic: 0
+  isKinematic: 1
 --- !u!114 &-7592401967698636201
 MonoBehaviour:
   m_ObjectHideFlags: 0
