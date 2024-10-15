@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1920484682777490804}
   - component: {fileID: 4482478450593400961}
   - component: {fileID: -6485126983228024296}
-  - component: {fileID: -7592401967698636201}
+  - component: {fileID: 9050593497417532506}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -119,7 +119,7 @@ MonoBehaviour:
   friction: 0.1
   force: {x: 0, y: 0, z: 0}
   isKinematic: 1
---- !u!114 &-7592401967698636201
+--- !u!114 &9050593497417532506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
